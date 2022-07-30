@@ -22,6 +22,7 @@ class CloudNet extends StatelessWidget {
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
       routerDelegate: router.routerDelegate,
     );
   }
