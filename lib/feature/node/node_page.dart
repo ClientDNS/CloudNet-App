@@ -42,79 +42,81 @@ class _MenuNodePageState extends State<MenuNodePage> {
         TextEditingValue(text: (oldNode?.port ?? 2812).toString()));
     return StoreConnector<AppState, AppState>(
       builder: (context, vm) => Center(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(
-                    left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
-                child: TextFormField(
-                  controller: _nameController,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    hintText: t.page.menu_node.name,
-                    labelText: t.page.menu_node.node_name,
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear),
-                      onPressed: () => _clearInputField(_nameController),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                      left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
+                  child: TextFormField(
+                    controller: _nameController,
+                    keyboardType: TextInputType.name,
+                    decoration: InputDecoration(
+                      hintText: t.page.menu_node.name,
+                      labelText: t.page.menu_node.node_name,
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: () => _clearInputField(_nameController),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                    left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
-                child: TextFormField(
-                  controller: _addressController,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    hintText: t.page.menu_node.address,
-                    labelText: t.page.menu_node.network_address,
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear),
-                      onPressed: () => _clearInputField(_addressController),
+                Container(
+                  margin: const EdgeInsets.only(
+                      left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
+                  child: TextFormField(
+                    controller: _addressController,
+                    keyboardType: TextInputType.name,
+                    decoration: InputDecoration(
+                      hintText: t.page.menu_node.address,
+                      labelText: t.page.menu_node.network_address,
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: () => _clearInputField(_addressController),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Theme(
-                data: Theme.of(context)
-                    .copyWith(dividerColor: Colors.transparent),
-                child: ExpansionTile(
-                  title: Text("Erweitere Einstellungen"),
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(
-                          left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
-                      child: TextFormField(
-                        controller: _portController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          hintText: t.page.menu_node.port,
-                          labelText: t.page.menu_node.port,
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.clear),
-                            onPressed: () => _clearInputField(_portController),
+                Theme(
+                  data: Theme.of(context)
+                      .copyWith(dividerColor: Colors.transparent),
+                  child: ExpansionTile(
+                    title: Text("Erweitere Einstellungen"),
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(
+                            left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
+                        child: TextFormField(
+                          controller: _portController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            hintText: t.page.menu_node.port,
+                            labelText: t.page.menu_node.port,
+                            suffixIcon: IconButton(
+                              icon: const Icon(Icons.clear),
+                              onPressed: () =>
+                                  _clearInputField(_portController),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(t.page.menu_node.ssl),
-                          Switch(
-                            value: ssl,
-                            onChanged: (value) => setState(() => ssl = value),
-                          )
-                        ],
+                      Container(
+                        margin: const EdgeInsets.all(16),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(t.page.menu_node.ssl),
+                            Switch(
+                              value: ssl,
+                              onChanged: (value) => setState(() => ssl = value),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    /*Container(
+                      /*Container(
                         margin: const EdgeInsets.all(16),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -133,52 +135,53 @@ class _MenuNodePageState extends State<MenuNodePage> {
                           ],
                         ),
                       ),*/
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.all(4),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 32),
-                      child: IconButton(
-                        onPressed: () => GoRouter.of(context).pop(),
-                        icon: const Icon(Icons.close),
-                        iconSize: Theme.of(context).iconTheme.size! * 2,
+                Container(
+                  margin: const EdgeInsets.all(4),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 32),
+                        child: IconButton(
+                          onPressed: () => GoRouter.of(context).pop(),
+                          icon: const Icon(Icons.close),
+                          iconSize: Theme.of(context).iconTheme.size! * 2,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 32),
-                      child: IconButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            newNode = newNode.copyWith(
-                                name: _nameController.text,
-                                host: _addressController.text,
-                                port: int.tryParse(_portController.text),
-                                ssl: ssl);
-                            if (oldNode != null) {
-                              StoreProvider.dispatch(context,
-                                  UpdateCloudNetNode(oldNode!, newNode));
-                              Navigator.pop(context);
-                            } else {
-                              StoreProvider.dispatch(
-                                  context, AddCloudNetNode(newNode));
-                              context.go(DashboardPage.route);
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 32),
+                        child: IconButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              newNode = newNode.copyWith(
+                                  name: _nameController.text,
+                                  host: _addressController.text,
+                                  port: int.tryParse(_portController.text),
+                                  ssl: ssl);
+                              if (oldNode != null) {
+                                StoreProvider.dispatch(context,
+                                    UpdateCloudNetNode(oldNode!, newNode));
+                                Navigator.pop(context);
+                              } else {
+                                StoreProvider.dispatch(
+                                    context, AddCloudNetNode(newNode));
+                                context.go(DashboardPage.route);
+                              }
                             }
-                          }
-                        },
-                        icon: Icon(Icons.done,
-                            color: Theme.of(context).colorScheme.secondary),
-                        iconSize: Theme.of(context).iconTheme.size! * 2,
-                      ),
-                    )
-                  ],
+                          },
+                          icon: Icon(Icons.done,
+                              color: Theme.of(context).colorScheme.secondary),
+                          iconSize: Theme.of(context).iconTheme.size! * 2,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
