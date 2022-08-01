@@ -260,7 +260,7 @@ StatefulBuilder addEditDeployment(
     ServiceDeployment deployment,
     NodeState state,
     void Function(ServiceDeployment deployment) save) {
-  var excludeController = TextEditingController();
+  var _excludeController = TextEditingController();
   return StatefulBuilder(
     builder: (context, setState) {
       final format =
@@ -340,15 +340,15 @@ StatefulBuilder addEditDeployment(
                 Divider(),
                 TextField(
                   keyboardType: TextInputType.name,
-                  controller: excludeController,
+                  controller: _excludeController,
                   enabled: true,
                   decoration: InputDecoration(
                     labelText: t.dialogs.deployment.file_folder,
                     suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
-                            deployment.excludes.add(excludeController.text);
-                            excludeController.clear();
+                            deployment.excludes.add(_excludeController.text);
+                            _excludeController.clear();
                           });
                         },
                         icon: Icon(Icons.add)),
