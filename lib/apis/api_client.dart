@@ -15,16 +15,13 @@ class ApiClient {
     dio = Dio()
       ..options.baseUrl = baseUrl
       ..interceptors.add(
-        InterceptorsWrapper(
+        QueuedInterceptorsWrapper(
           onRequest: (options, handler) async {
-            dio.lock();
             final token = tokenProvider();
             if (token != null) {
               options.headers['Authorization'] = 'Bearer $token';
-              dio.unlock();
               return handler.next(options);
             } else {
-              dio.unlock();
               return handler.reject(DioError(requestOptions: options));
             }
           },

@@ -125,7 +125,9 @@ class _TasksPageState extends State<TasksPage> {
                   selectedAggregateWidgetFn: (List<Widget> list) {
                     return Row(
                       children: [
-                        Wrap(children: list),
+                        Flexible(
+                          child: Wrap(children: list),
+                        )
                       ],
                     );
                   },

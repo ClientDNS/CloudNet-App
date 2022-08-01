@@ -1,6 +1,5 @@
 import 'package:cloudnet/apis/cloudnetv3spec/model/cloudnet/network_cluster_node.dart';
 import 'package:cloudnet/apis/cloudnetv3spec/model/cloudnet/network_cluster_node_info_snapshot.dart';
-import 'package:cloudnet/apis/cloudnetv3spec/model/cloudnet/node_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cluster_node.freezed.dart';
