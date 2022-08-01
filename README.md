@@ -38,14 +38,26 @@ Restart CloudNet and install the Rest module with `module install CloudNet-Rest`
 ### Prerequisites
 - Git
 - Flutter
+- Dart SDK
 - Android Studio
 - CloudNet v4 Node
 ### How to use
 Clone the repository into your [Android Studio](https://developer.android.com/studio).
+
+Before you start developing or after running `flutter clean` execute:
+```shell
+flutter pub get
+```
 Run at every change at [freezed](https://pub.dev/packages/freezed) model this command:
 ```shell
-flutter pub run build_runner build
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
-Then go to the top bar next the debugging button and press `Edit configuration`.
-Add new flutter configuration and use as dart main following file: `main_alpha.dart`. 
+
+To run the app go to the top bar and select the **Alpha Script** as `Run/Debug Configuration`. 
+Also select a device in the `Flutter Device Selection` which is to the left of it. 
+Now press the `Run 'Alpha'` button which is also in the top bar next to the other configurations just mentioned and wait for the app to run.
+
+**If no alpha script is displayed, follow the steps below:**  
+Go to the top bar next the debugging button and press `Edit configuration`.
+Add a new flutter configuration and use as dart main following file: `main_alpha.dart`. 
 And add also at `Build Flavor` `alpha` as value. 
